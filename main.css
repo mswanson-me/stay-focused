@@ -1,0 +1,69 @@
+body {
+  background: url('daria-kopylova-700996-unsplash.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 800;
+}
+
+.row {
+  background: rgba(200, 200, 200, .7);
+}
+
+.taskTitle {
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+}
+
+input, button {
+  padding: 5px;
+}
+
+button {
+  width: 40px;
+  border: 1px solid #aaa;
+}
+
+li {
+  padding: 5px;
+  list-style-type: none;
+}
+
+.complete-item {
+  float: left;
+  border-radius: 7px 0 0 7px;
+}
+
+.delete-item {
+  float: right;
+  border-radius: 0 7px 7px 0;
+}
+
+.complete-item:hover, .complete-item:focus {
+  background: forestgreen;
+  color: white;
+}
+
+.delete-item:hover, .delete-item:focus {
+  background: indianred;
+}
+
+.add-item-btn:hover, .add-item-btn:focus {
+  background: slategray;
+}
+
+.strikethrough {
+  color: #666;
+  font-style: italic;
+  text-decoration: line-through;
+}
+
+.attribution {
+  position: absolute;
+  top: 90%;
+  left: 80%;
+  padding: 4px;
+  background: rgba(200, 200, 200, .5);
+}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>To Do List</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+  <link rel="stylesheet" type="text/css" media="screen" href="grid.css" />
+  <link href="https://fonts.googleapis.com/css?family=Montserrat|Raleway" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+</head>
+<body>
+  <main role="main">
+    <div class="row">
+      <section role="region" class="col-6">
+        <div class="taskTitle">
+          <h1>Today's Tasks</h1>
+          <input autofocus class="newItem" type="text" placeholder="New Item">
+          <button type="button" class="newItem add-item-btn">Add</button>
+        </div>
+        <ul id="itemList"></ul>
+      </section>
+    </div>  
+  </main>
+  <footer>
+    <p class="attribution">Photo by Daria Kopylova on Unsplash</p>
+  </footer>
+  <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+  <script src="index.js"></script>
+</body>
+</html>
