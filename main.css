@@ -17,12 +17,14 @@ legend {
   padding: 15px;
 }
 
-.taskTitle {
+.taskTitle, .noteTitle {
   text-align: center;
   font-family: 'Montserrat', sans-serif;
 }
 
-input, button {
+
+
+input, textarea, button {
   padding: 5px;
 }
 
