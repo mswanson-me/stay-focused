@@ -1,15 +1,6 @@
 let listContent = '';
 
-let LISTITEMS = [
-  {
-    item: 'task 1',
-    checked: false,
-  },
-  {
-    item: 'thing 2',
-    checked: true,
-  },
-];
+let LISTITEMS = [];
 
 function addNewItem(item){
   let o = new Object();
