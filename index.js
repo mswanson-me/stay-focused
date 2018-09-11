@@ -21,7 +21,7 @@ function addNewItem(item){
 function populateList(){
   listContent = '';
   for (let i = 0; i < LISTITEMS.length; i++){
-    listContent = listContent + `<li class='list-item'><button type="button" class="complete-item fas fa-check"></button>${LISTITEMS[i].item}<button type="button" class="delete-item fas fa-times"></button></li>`;
+    listContent = listContent + `<li class='list-item'>${LISTITEMS[i].item}<span class="btn-group"><button type="button" class="complete-item fas fa-check"></button><button type="button" class="delete-item fas fa-times"></button></span></li>`;
   };
   return listContent;
 };
