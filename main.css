@@ -12,6 +12,11 @@ body {
   background: rgba(200, 200, 200, .7);
 }
 
+legend {
+  font-size: 2em;
+  padding: 15px;
+}
+
 .taskTitle {
   text-align: center;
   font-family: 'Montserrat', sans-serif;
@@ -36,14 +41,6 @@ li {
 
 .btn-group {
   float: left;
-}
-
-.complete-item {
-
-}
-
-.delete-item {
-
 }
 
 .complete-item:hover, .complete-item:focus {

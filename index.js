@@ -40,6 +40,7 @@ function deleteItem(){
 
 function initEventListeners(){
   $('main').on('click', '.newItem', function(event){
+    event.preventDefault();
     let input = $('input').val();
     if (input == ''){
       return;

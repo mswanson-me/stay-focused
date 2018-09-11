@@ -14,12 +14,14 @@
   <main role="main">
     <div class="row">
       <section role="region" class="col-6">
-        <div class="taskTitle">
-          <h1>Today's Tasks</h1>
+        <form class="taskTitle">          
+          <legend>Today's Tasks</legend>
           <input autofocus class="newItem" type="text" placeholder="New Item">
-          <button type="button" class="newItem add-item-btn">Add</button>
-        </div>
-        <ul id="itemList"></ul>
+          <button type="submit" class="newItem add-item-btn">Add</button>
+        </form>
+        <ul id="itemList">
+          
+        </ul>
       </section>
     </div>  
   </main>
