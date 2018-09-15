@@ -69,6 +69,10 @@ li {
   font-style: italic;
   text-decoration: line-through;
 }
+.strikethrough .complete-item {
+  color: forestgreen;
+  background-color: #bbb;
+}
 
 .attribution {
   font-size: 0.7em;
