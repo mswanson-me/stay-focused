@@ -22,10 +22,9 @@ legend {
   font-family: 'Montserrat', sans-serif;
 }
 
-
-
 input, textarea, button {
   padding: 5px;
+  font-family: inherit;
 }
 
 button {
