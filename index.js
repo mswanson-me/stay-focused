@@ -27,7 +27,7 @@ function renderDateTime(){
     mins = '0' + mins;
   }
 
-  $('.date').html(`<h1>${month}/${day}</h1><h2>${hours}:${mins}</h2>`);
+  $('.date').html(`${month}/${day} ${hours}:${mins}`);
 }
 
 function addNewItem(item){
@@ -42,7 +42,7 @@ function populateList(){
   listContent = '';
   
   for (let i = 0; i < LISTITEMS.length; i++){
-    listContent = listContent + `<li class="list-item ${LISTITEMS[i].checked ? 'strikethrough' : ''}">${LISTITEMS[i].item}<span class="btn-group"><button type="button" class="complete-item fas fa-check"></button><button type="button" class="delete-item fas fa-times"></button></span></li>`;
+    listContent = listContent + `<li class="list-item ${LISTITEMS[i].checked ? 'strikethrough' : ''}">${LISTITEMS[i].item}<span class="btn-group"><button type="button" class="complete-item fas fa-check"></button><button type="button" class="delete-item fas fa-trash"></button></span></li>`;
   };
   
   console.log('populated...');

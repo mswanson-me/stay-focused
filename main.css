@@ -13,9 +13,8 @@ body {
 }
 
 .date {
-  font-size: 56px;
-  color: white;
-  float: left;
+  text-align: center;
+  font-size: 2em;
 }
 
 legend {
@@ -72,9 +71,6 @@ li {
 }
 
 .attribution {
-  position: absolute;
-  top: 90%;
-  left: 80%;
-  padding: 4px;
-  background: rgba(200, 200, 200, .5);
+  font-size: 0.7em;
+  text-align: center;
 }
