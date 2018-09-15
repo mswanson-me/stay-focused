@@ -1,10 +1,20 @@
 let listContent = '';
+let LISTITEMS = [];
 
 if (localStorage.length > 0){
-  console.log (localStorage);
-} else {
-  LISTITEMS = [];
+  for (let i = 0; i < localStorage.length; i++){
+    LISTITEMS.push(JSON.parse(localStorage.getItem(i)));
+  }
 };
+
+function syncLocalStorage(){
+  localStorage.clear();
+  for (let i = 0; i < LISTITEMS.length; i++){
+    let itemKey = i;
+    let itemValue = JSON.stringify(LISTITEMS[i]);
+    localStorage.setItem(itemKey, itemValue);
+  };
+}
 
 function renderDateTime(){
   let time = new Date();
@@ -71,7 +81,6 @@ function initEventListeners(){
     LISTITEMS[strikeIndex].checked = !LISTITEMS[strikeIndex].checked;
     console.log('item completed...');
     renderList(populateList());
-    // $(event.target).closest('li').toggleClass('strikethrough');
   });
 
   $('main').on('click', '.delete-item', function(event){
@@ -80,12 +89,19 @@ function initEventListeners(){
     console.log('item deleted...');
     renderList(populateList());
   });
+
+  window.onbeforeunload = function(e) {
+    e.preventDefault();
+    syncLocalStorage();
+    return undefined;
+  };
 };
 
 function toDoLoop(){
   console.log('initializing event listeners...');
   initEventListeners();
   setInterval(renderDateTime, 1000);
+  setInterval(syncLocalStorage, 600000);
   renderList(populateList());
 };
 
