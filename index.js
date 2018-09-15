@@ -1,20 +1,9 @@
 let listContent = '';
 let LISTITEMS = [];
 const time = new Date();
-let curTime = '';
 
-function renderTime(){
-  curTime = setInterval(updateTime(), 1000);
-}
-
-function updateTime(){
-  hours = time.getHours();
-  mins = time.getMinutes();
-
-  if (mins < 10){
-    mins = '0' + mins;
-  }
-  $('.time').html(`${hours}:${mins}`);
+function renderDate(){
+  $('.date').html(`${time.getMonth() + 1}/${time.getDate()}`);
 }
 
 function addNewItem(item){
@@ -23,7 +12,7 @@ function addNewItem(item){
   o.checked = false;
   LISTITEMS.push(o);
   console.log(LISTITEMS);
-};
+}
 
 function populateList(){
   listContent = '';
@@ -78,7 +67,7 @@ function initEventListeners(){
 function toDoLoop(){
   console.log('initializing event listeners...');
   initEventListeners();
-  renderTime();
+  renderDate();
   renderList(populateList());
 };
 
