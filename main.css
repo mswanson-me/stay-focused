@@ -12,14 +12,10 @@ body {
   background: rgba(200, 200, 200, .7);
 }
 
-header {
-  display: inline;
-  float: left;
-}
-
 .date {
   font-size: 56px;
   color: white;
+  float: left;
 }
 
 legend {

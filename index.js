@@ -1,6 +1,21 @@
 let listContent = '';
 let LISTITEMS = [];
 
+if (localStorage.length > 0){
+  for (let i = 0; i < localStorage.length; i++){
+    LISTITEMS.push(JSON.parse(localStorage.getItem(i)));
+  }
+};
+
+function syncLocalStorage(){
+  localStorage.clear();
+  for (let i = 0; i < LISTITEMS.length; i++){
+    let itemKey = i;
+    let itemValue = JSON.stringify(LISTITEMS[i]);
+    localStorage.setItem(itemKey, itemValue);
+  };
+}
+
 function renderDateTime(){
   let time = new Date();
   let month = time.getMonth() + 1;
@@ -20,15 +35,16 @@ function addNewItem(item){
   o.item = item;
   o.checked = false;
   LISTITEMS.push(o);
-  console.log(LISTITEMS);
+  console.log('item added...');
 }
 
 function populateList(){
   listContent = '';
+  
   for (let i = 0; i < LISTITEMS.length; i++){
-
-  listContent = listContent + `<li class="list-item ${LISTITEMS[i].checked ? 'strikethrough' : ''}">${LISTITEMS[i].item}<span class="btn-group"><button type="button" class="complete-item fas fa-check"></button><button type="button" class="delete-item fas fa-times"></button></span></li>`;
+    listContent = listContent + `<li class="list-item ${LISTITEMS[i].checked ? 'strikethrough' : ''}">${LISTITEMS[i].item}<span class="btn-group"><button type="button" class="complete-item fas fa-check"></button><button type="button" class="delete-item fas fa-times"></button></span></li>`;
   };
+  
   console.log('populated...');
   return listContent;
 }
@@ -57,26 +73,35 @@ function initEventListeners(){
       renderList(populateList());
       $('input').val('');
     };
+    console.log('add item clicked...');
   });
 
   $('main').on('click', '.complete-item', function(event){
     let strikeIndex = $(event.target).closest('li').index();
     LISTITEMS[strikeIndex].checked = !LISTITEMS[strikeIndex].checked;
-    console.log(LISTITEMS[strikeIndex].checked);
-    $(event.target).closest('li').toggleClass('strikethrough');
+    console.log('item completed...');
+    renderList(populateList());
   });
 
   $('main').on('click', '.delete-item', function(event){
     let spliceIndex = $(event.target).closest('li').index();
     LISTITEMS.splice(spliceIndex, 1);
+    console.log('item deleted...');
     renderList(populateList());
   });
+
+  window.onbeforeunload = function(e) {
+    e.preventDefault();
+    syncLocalStorage();
+    return undefined;
+  };
 };
 
 function toDoLoop(){
   console.log('initializing event listeners...');
   initEventListeners();
   setInterval(renderDateTime, 1000);
+  setInterval(syncLocalStorage, 600000);
   renderList(populateList());
 };
 
