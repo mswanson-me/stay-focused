@@ -1,10 +1,20 @@
 let listContent = '';
 let LISTITEMS = [];
-const curTime = new Date();
-let strike = '';
+const time = new Date();
+let curTime = '';
 
 function renderTime(){
-  $('.time').html(`${curTime.getHours()}:${curTime.getMinutes()}`);
+  curTime = setInterval(updateTime(), 1000);
+}
+
+function updateTime(){
+  hours = time.getHours();
+  mins = time.getMinutes();
+
+  if (mins < 10){
+    mins = '0' + mins;
+  }
+  $('.time').html(`${hours}:${mins}`);
 }
 
 function addNewItem(item){
@@ -38,9 +48,7 @@ function deleteItem(){
   // remove selected item
 };
 
-function initEventListeners(){
-  setInterval(renderTime, 60000);
-  
+function initEventListeners(){  
   $('main').on('click', '.newItem', function(event){
     event.preventDefault();
     let input = $('input').val();
@@ -70,6 +78,7 @@ function initEventListeners(){
 function toDoLoop(){
   console.log('initializing event listeners...');
   initEventListeners();
+  renderTime();
   renderList(populateList());
 };
 
