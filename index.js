@@ -54,14 +54,6 @@ function renderList(content){
   console.log('rendered...');
 };
 
-function completeItem(){
-  // addClass strikethrough to selected item
-};
-
-function deleteItem(){
-  // remove selected item
-};
-
 function initEventListeners(){  
   $('main').on('click', '.newItem', function(event){
     event.preventDefault();
