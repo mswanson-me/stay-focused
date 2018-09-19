@@ -1,6 +1,21 @@
 let listContent = '';
 let LISTITEMS = [];
 
+const MONTHS = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December'
+];
+
 if (localStorage.length > 0){
   for (let i = 0; i < localStorage.length; i++){
     LISTITEMS.push(JSON.parse(localStorage.getItem(i)));
@@ -18,16 +33,23 @@ function syncLocalStorage(){
 
 function renderDateTime(){
   let time = new Date();
-  let month = time.getMonth() + 1;
+  let year = time.getFullYear();
+  let month = MONTHS[time.getMonth()];
   let day = time.getDate();
   let hours = time.getHours();
   let mins = time.getMinutes();
+  let amPm = 'AM';
   
+  if (hours > 12){
+    hours = hours - 12;
+    amPm = 'PM'
+  };
+
   if (mins < 10){
     mins = '0' + mins;
-  }
+  };
 
-  $('.date').html(`${month}/${day} ${hours}:${mins}`);
+  $('.date').html(`${month} ${day}, ${year} <br /> ${hours}:${mins} ${amPm}`);
 }
 
 function addNewItem(item){
@@ -35,7 +57,6 @@ function addNewItem(item){
   o.item = item;
   o.checked = false;
   LISTITEMS.push(o);
-  console.log('item added...');
 }
 
 function populateList(){

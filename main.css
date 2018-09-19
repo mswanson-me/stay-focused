@@ -14,7 +14,7 @@ body {
 
 .date {
   text-align: center;
-  font-size: 2em;
+  font-size: 1.5em;
 }
 
 legend {
@@ -41,6 +41,7 @@ button {
 
 li {
   width: 100%;
+  font-size: 20px;
   padding: 5px;
   display: flex;
   justify-content: space-between;
