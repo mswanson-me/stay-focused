@@ -1,9 +1,11 @@
 let listContent = '';
+let listNote;
 let LISTITEMS = [];
 
 if (localStorage.length > 0){
   for (let i = 0; i < localStorage.length; i++){
     LISTITEMS.push(JSON.parse(localStorage.getItem(i)));
+    console.log('list filled from localStorage');
   }
 };
 
@@ -34,24 +36,38 @@ function addNewItem(item){
   let o = new Object();
   o.item = item;
   o.checked = false;
+  o.subList = [];
+  o.note = '';
   LISTITEMS.push(o);
   console.log('item added...');
 }
 
+function addSubList(){
+
+}
+
+function addNote(){
+
+}
+
 function populateList(){
   listContent = '';
-  
+
   for (let i = 0; i < LISTITEMS.length; i++){
-    listContent = listContent + `<li class="list-item ${LISTITEMS[i].checked ? 'strikethrough' : ''}">${LISTITEMS[i].item}<span class="btn-group"><button type="button" class="complete-item fas fa-check"></button><button type="button" class="delete-item fas fa-trash"></button></span></li>`;
+    if (LISTITEMS[i].note == undefined){
+      listNote = '';
+    } else {
+      listNote = `<p>${LISTITEMS[i].note}</p>`;
+    };
+
+    listContent = listContent + `<li class="list-item ${LISTITEMS[i].checked ? 'strikethrough' : ''}">${LISTITEMS[i].item}${listNote}<span class="btn-group"><button type="button" class="add-note fas fa-plus"></button><button type="button" class="complete-item fas fa-check"></button><button type="button" class="delete-item fas fa-trash"></button></span></li>`;
   };
   
-  console.log('populated...');
   return listContent;
 }
 
 function renderList(content){
   $('#itemList').html(content);
-  console.log('rendered...');
 };
 
 function initEventListeners(){  
@@ -65,20 +81,24 @@ function initEventListeners(){
       renderList(populateList());
       $('input').val('');
     };
-    console.log('add item clicked...');
+  });
+
+  $('main').on('click', '.add-note', function(event){
+    let index = $(event.target).closest('li').index();
+    LISTITEMS[index].note = 'testing';
+    console.log(`note added: ${LISTITEMS[index].note}`)
+    renderList(populateList());
   });
 
   $('main').on('click', '.complete-item', function(event){
     let strikeIndex = $(event.target).closest('li').index();
     LISTITEMS[strikeIndex].checked = !LISTITEMS[strikeIndex].checked;
-    console.log('item completed...');
     renderList(populateList());
   });
 
   $('main').on('click', '.delete-item', function(event){
     let spliceIndex = $(event.target).closest('li').index();
     LISTITEMS.splice(spliceIndex, 1);
-    console.log('item deleted...');
     renderList(populateList());
   });
 
@@ -90,7 +110,6 @@ function initEventListeners(){
 };
 
 function toDoLoop(){
-  console.log('initializing event listeners...');
   initEventListeners();
   setInterval(renderDateTime, 1000);
   setInterval(syncLocalStorage, 600000);

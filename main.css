@@ -39,6 +39,10 @@ button {
   border: 1px solid #aaa;
 }
 
+.list-item:hover, .list-item:focus {
+  background: rgba(200, 200, 200, .9);
+}
+
 li {
   width: 100%;
   padding: 5px;
@@ -47,8 +51,17 @@ li {
   list-style-type: none;
 }
 
+p {
+  text-align: left;
+}
+
 .btn-group {
   float: left;
+}
+
+.add-note:hover, .add-note:focus {
+  background: navy;
+  color: white;
 }
 
 .complete-item:hover, .complete-item:focus {
