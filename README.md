@@ -8,7 +8,7 @@ There are definitely more features I would like to add (see: [Issues](https://gi
 
 ## Usage
 
-Visit [the live site](https://stay-focused.mswanson.me) and try it out. All features should be relatively apparent (if I've done my job correctly), but basically...:
+Visit [the live site](https://to-do.mswanson.me) and try it out. All features should be relatively apparent (if I've done my job correctly), but basically...:
 
 * Type a new task into the text field and hit Enter to **add** it to your list
 * Tasks can be marked as **completed** with the checkmark button or **deleted** with the trash can button
