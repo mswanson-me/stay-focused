@@ -12,6 +12,13 @@ body {
   background: rgba(200, 200, 200, .7);
 }
 
+.weather {
+  font-size: 1.0em;
+  padding: 5px;
+  background: rgba(240, 240, 240, 1);
+  border-radius: 5px;
+}
+
 .date {
   text-align: center;
   font-size: 1.5em;

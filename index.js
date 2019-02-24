@@ -1,4 +1,7 @@
 let LISTITEMS = [];
+const WEATHER_API = 'https://api.weather.gov/points/';
+const WEATHER_KEY = 'thisFieldIntentionallyBlank';
+let loc = '';
 
 const MONTHS = [
   'January',
@@ -55,6 +58,39 @@ function renderDateTime(){
 
   $('.date').html(`${month} ${day}, ${year} <br /> ${hours}:${mins} ${amPm}`);
 }
+
+function renderWeather(data){
+  const today = data.properties.periods[0];
+  $('.weather').html(`High: ${today.temperature}${today.temperatureUnit} <br /> ${today.shortForecast} <br /> Wind: ${today.windDirection} ${today.windSpeed}`);
+  console.log(today);
+}
+
+function getForecast(data){
+  const settings = {
+    url: data.properties.forecast,
+    dataType: 'json',
+    type: 'GET',
+    success: renderWeather,
+  };
+  $.ajax(settings);
+  console.log(data.properties.forecast);
+}
+
+function getWeather(query){
+  const settings = {
+    url: query,
+    dataType: 'json',
+    type: 'GET',
+    success: getForecast,
+  };
+  $.ajax(settings);
+}
+
+navigator.geolocation.getCurrentPosition(function(position) {
+  loc = position.coords.latitude + ',' + position.coords.longitude;
+  let weatherRequest = WEATHER_API + loc;
+  getWeather(weatherRequest);
+});
 
 /* Creates new item object and pushes it to LISTITEMS array */
 function addNewItem(item){
