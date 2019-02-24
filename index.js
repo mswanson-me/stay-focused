@@ -47,7 +47,9 @@ function renderDateTime(){
   let mins = time.getMinutes();
   let amPm = 'AM';
   
-  if (hours > 12){
+  if (hours == 12){
+    amPm = 'PM'
+  } else if (hours > 12){
     hours = hours - 12;
     amPm = 'PM'
   };
